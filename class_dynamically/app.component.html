@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 id="heading">Profile Pic Styling</h2>
+
+    <select id="edge" [(ngModel)]="edge">
+      <option value="pro-pic-bordered">Rounded Edge</option>
+      <option value="pro-pic-sharp">Sharp Edge</option></select
+    ><br />
+
+    <select name="size" id="size" [(ngModel)]="size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option></select
+    ><br />
+
+    <button id="apply-style" (click)="applyStyle()">Apply Style</button><br />
+
+    <div id="image">
+      <img
+        src="../assets/images/ProPic.jpg"
+        id="pro-pic"
+        [class]="netStyle"
+      />
+    </div>
+  </body>
+</html>
