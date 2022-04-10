@@ -1,0 +1,108 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForms" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            formControlName="username"
+            class="form-control">
+            comment -- get() method allows us to get access to our controls easily
+            <span
+              *ngIf="!signupForms.get('username').valid && signupForms.get('username').touched"
+              style="color: red;"
+              >Please enter a valid username!</span>
+        </div>
+        <div class="form-group">
+          <label for="email">email</label>
+          <input
+            type="text"
+            id="email"
+            formControlName="email"
+            class="form-control">
+            <span
+              *ngIf="!signupForms.get('email').valid && signupForms.get('email').touched"
+              style="color: red;"
+              >Please enter a valid email!</span>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              [value]="gender">{{ gender }}
+          </label>
+        </div>
+        <span
+          *ngIf="!signupForms.valid && signupForms.touched"
+          style="color: red;"
+          >Please enter a valid data!</span>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForms" (ngSubmit)="onSubmit()">
+        <div formGroupName="userdata">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+              <!-- get() method allows us to get access to our controls easily -->
+              <span
+                *ngIf="!signupForms.get('userdata.username').valid && signupForms.get('userdata.username').touched"
+                style="color: red;"
+                >Please enter a valid username!</span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+              <span
+                *ngIf="!signupForms.get('userdata.email').valid && signupForms.get('userdata.email').touched"
+                style="color: red;"
+                >Please enter a valid email!</span>
+          </div>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input
+              type="radio"
+              formControlName="gender"
+              [value]="gender">{{ gender }}
+          </label>
+        </div>
+        <div formArrayName="hobbies">
+          <h4>Your Hobbies</h4>
+          <button 
+            class="btn btn-primary" 
+            type="button" 
+            (click)="onAddHobby()">Add Hobby</button>
+            <div 
+              class="form-group"
+              *ngFor="let hobbyControl of signupForms.get('hobbies').controls; let i = index">
+              <input type="text" class="form-control" [formControlName]="i">
+            </div>
+        </div>
+        <span
+          *ngIf="!signupForms.valid && signupForms.touched"
+          style="color: red;"
+          >Please enter a valid data!</span>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
